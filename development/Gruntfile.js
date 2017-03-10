@@ -19,7 +19,7 @@ module.exports = function(grunt) {
         tasks: ['concat:concat_COPY'],
       },
       watchCSS: {
-        files: ['../style.css'],
+        files: ['../assets/css/main.css'],
         tasks: ['postcss', 'concat:concat_CSS'],
         options: {
           debounceDelay: 5000,
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
           separator: '\n\n',
         },
         files: {
-          '../style.css': ['sass/style-header.css', '../style.css'],
+          '../assets/css/main.css': ['sass/comment-header.css', '../assets/css/main.css'],
         },
       },
     },
@@ -78,23 +78,24 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer')({browsers: ['last 20 versions']})
+          require('autoprefixer')({browsers: ['last 20 versions']}),
+          //require('cssnano')() // minify the result
         ]
       },
       dist: {
-        src: '../assets/css/**/*.css'
+        src: '../assets/css/*.css'
       }
     },
     'ftp-deploy' : {
       build: {
         auth: {
-          host: 'ftp.simpledot.cz',
+          host: 'ftp.hostname.cz',
           port: 21,
           authKey: 'key1'
         },
-        src: 'build/',
-        dest: '/mojeodpadky/',
-        exclusions: ['/.sass-cache/**/*']
+        src: ['./'],
+        dest: './',
+        exclusions: ['development/**/*', '.gitignore']
       }
     }
   });

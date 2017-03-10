@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="page-home">
+<div class="page-content">
 
   <section>
     <h1 class="page-title">Webpage foundations</h1>
