@@ -11,11 +11,11 @@ module.exports = function(grunt) {
         tasks: ['sass:specific'],
       },
       watchMainJS: {
-        files: ['js-dev/*.js', '!js-dev/tpl-specific/**/*.js'],
+        files: ['js/*.js', '!js/tpl-specific/**/*.js'],
         tasks: ['concat:concat_JS'],
       },
       watchOtherJS: {
-        files: ['js-dev/tpl-specific/**/*.js'],
+        files: ['js/tpl-specific/**/*.js'],
         tasks: ['concat:concat_COPY'],
       },
       watchCSS: {
@@ -53,13 +53,13 @@ module.exports = function(grunt) {
     concat: {
       concat_JS: {
         files: {
-          '../assets/js/main.js': ['js-dev/*.js'],
+          '../assets/js/main.js': ['js/*.js'],
         },
       },
       concat_COPY: {
         files: [{
           expand: true,
-          cwd: 'js-dev/tpl-specific/', // Parent directory
+          cwd: 'js/tpl-specific/', // Parent directory
           src: '*.js',
           ext: '.js',
           dest: '../assets/js/',
